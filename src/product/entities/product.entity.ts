@@ -1,9 +1,9 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { Product } from "src/product/entities/product.entity";
-import { BeforeInsert, BeforeRemove, BeforeUpdate, Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { category } from "src/category/entities/category.entity";
+import { BeforeInsert, BeforeRemove, BeforeUpdate, Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
-@Entity("categories")
-export class category{
+@Entity("products")
+export class Product{
   @ApiProperty()
   @PrimaryGeneratedColumn({ name: "id" })
   id: number
@@ -13,12 +13,34 @@ export class category{
   name: string | null;
 
   @ApiProperty()
-  @Column("text", { name: "description", nullable: true })
-  description: string | null;
+  @Column('decimal', { name: 'tva', nullable: true })
+  tva: number | null;
+  
+  @ApiProperty()
+  @Column('decimal', { name: 'priceHT', nullable: true })
+  priceHT: number | null;
 
   @ApiProperty()
-  @OneToMany(() => Product, (Product: Product) => Product.categoryId, { cascade: true })
-  products:Product[] | null;
+  @Column('decimal', { name: 'priceTTC', nullable: true })
+  priceTTC: number | null;
+
+  @ApiProperty()
+  @Column('integer', { name: 'initialQuantity', nullable: true })
+  initialQuantity: number | null;
+
+  @ApiProperty()
+  @Column('integer', { name: 'remainingQuantity', nullable: true })
+  remainingQuantity: number | null;
+
+  @ApiProperty()
+  @ManyToOne(() => category, (category: category) => category.id)
+  @JoinColumn({ name: "categoryId" })
+  categoryId: number | null;
+
+  //@ApiProperty()
+  //@ManyToOne(() => Model, (Model: Model) => Model.id)
+  //@JoinColumn({ name: "modelId" })
+  //modelId: number | null;
 
   @ApiProperty()
   @Column("boolean", { name: "active", nullable: true, default: true })

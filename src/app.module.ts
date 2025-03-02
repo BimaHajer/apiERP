@@ -6,6 +6,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
 import { SharedModule } from './shared/shared.module';
+import { CategoryModule } from './category/category.module';
+import { ProviderModule } from './provider/provider.module';
+import { ProductModule } from './product/product.module';
+import { TvaModule } from './tva/tva.module';
 
 @Module({
   imports: [
@@ -23,6 +27,10 @@ import { SharedModule } from './shared/shared.module';
     }),
     UsersModule,
     AuthModule,
+    CategoryModule,
+    ProviderModule,
+    TvaModule,
+    ProductModule,
     SharedModule,
   ],
   controllers: [AppController],
