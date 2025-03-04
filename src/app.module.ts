@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -10,7 +11,9 @@ import { CategoryModule } from './category/category.module';
 import { ProviderModule } from './provider/provider.module';
 import { ProductModule } from './product/product.module';
 import { TvaModule } from './tva/tva.module';
-
+import { ClientModule } from './client/client.module';
+import { BrandsModule } from './brands/brands.module';
+import { ModelsModule } from './models/models.module';
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
@@ -32,6 +35,10 @@ import { TvaModule } from './tva/tva.module';
     TvaModule,
     ProductModule,
     SharedModule,
+    ClientModule,
+    BrandsModule,
+    ModelsModule
+
   ],
   controllers: [AppController],
   providers: [AppService],
