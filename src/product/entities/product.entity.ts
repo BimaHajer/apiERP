@@ -1,5 +1,7 @@
+/* eslint-disable */
 import { ApiProperty } from "@nestjs/swagger";
 import { category } from "src/category/entities/category.entity";
+import { Model } from "src/models/entities/model.entity";
 import { BeforeInsert, BeforeRemove, BeforeUpdate, Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity("products")
@@ -11,6 +13,10 @@ export class Product{
   @ApiProperty()
   @Column("text", { name: "name", nullable: true })
   name: string | null;
+
+  @ApiProperty()
+  @Column("text", { name: "description", nullable: true })
+  description: string | null;
 
   @ApiProperty()
   @Column('decimal', { name: 'tva', nullable: true })
@@ -37,11 +43,11 @@ export class Product{
   @JoinColumn({ name: "categoryId" })
   categoryId: number | null;
 
-  //@ApiProperty()
-  //@ManyToOne(() => Model, (Model: Model) => Model.id)
-  //@JoinColumn({ name: "modelId" })
-  //modelId: number | null;
-
+  @ApiProperty()
+  @ManyToOne(() => Model, (Model: Model) => Model.id)
+  @JoinColumn({ name: "modelId" })
+  modelId: number | null;
+  
   @ApiProperty()
   @Column("boolean", { name: "active", nullable: true, default: true })
   active: boolean | false;

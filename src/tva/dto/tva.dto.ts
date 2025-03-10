@@ -1,6 +1,5 @@
-import { IsString, IsEmail } from 'class-validator';
-import { Decimal128 } from 'typeorm';
-
+/* eslint-disable */
+import { IsString } from 'class-validator';
 export class tvaDto {  
   
   @IsString()

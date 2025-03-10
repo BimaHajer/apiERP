@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { ApiProperty } from '@nestjs/swagger/dist/decorators';
 
 export class ProductDto {
@@ -21,12 +22,13 @@ export class ProductDto {
 
   @ApiProperty()
   readonly remainingQuantity: number;
-
-  @ApiProperty()
-  picture?: string;
-
-  @ApiProperty()
+ @ApiProperty()
   readonly categoryId?: number;
+
+
+
+  @ApiProperty()
+  readonly modelId?: number;
 
   createdBy?: number;
 }

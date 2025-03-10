@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { ApiProperty } from '@nestjs/swagger/dist/decorators';
 
 export class CategoryDto {
@@ -8,7 +9,9 @@ export class CategoryDto {
 
   @ApiProperty()
   readonly description?: string;
-
+  
+  @ApiProperty()
+  readonly active?: boolean;
   @ApiProperty()
   picture?: string;
 

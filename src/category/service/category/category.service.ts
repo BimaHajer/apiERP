@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm/dist';
 import { CategoryDto } from 'src/category/dto/category.dto';
@@ -51,7 +52,7 @@ export class CategoryService {
         }
         return category;
     }
-                    
+  
     async remove(id: number) {
       return await this.categoryRepository.delete(id);
     }
@@ -66,7 +67,7 @@ export class CategoryService {
           resultDelete = false
         }
         if (toDisable.length != 0) {
-          if (await this.categoryRepository.update(toDisable, { updatedBy: idUser, updatedAt: new Date()})) {
+          if (await this.categoryRepository.update(toDisable, { active: false,updatedBy: idUser, updatedAt: new Date()})) {
             resultDisable = true
           } else
             resultDisable = false
