@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { parseFilter } from 'src/filter.dto';
@@ -44,7 +45,7 @@ export class ProductService {
     }
                     
     async findById(id: number): Promise<Product> {
-        const product = await this.productRepository.findOne({ where: { id } ,relations: ['categoryId']});
+        const product = await this.productRepository.findOne({ where: { id } ,relations: ['categoryId','modelId','modelId.brandId']});
         if (!product) {
             throw new NotFoundException(`Produit avec l'ID ${id} introuvable`);
         }

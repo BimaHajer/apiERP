@@ -2,6 +2,7 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { Brand } from "../../brands/entities/brand.entity";
 import { BeforeInsert, BeforeRemove, BeforeUpdate, Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Product } from "src/product/entities/product.entity";
 
 @Entity("Modeles")
 export class Model {
@@ -54,6 +55,10 @@ export class Model {
     @JoinColumn({ name: "brandId" })
     brandId: number | null;
   
+    @ApiProperty()
+    @OneToMany(() => Product, (product: Product) => product.modelId, { cascade: true })
+    products: Product[] | null;  
+
     @BeforeInsert()
     eventCreatedAt() {
       this.createdAt = new Date();
