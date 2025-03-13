@@ -14,6 +14,7 @@ import { TvaModule } from './tva/tva.module';
 import { ClientModule } from './client/client.module';
 import { BrandsModule } from './brands/brands.module';
 import { ModelsModule } from './models/models.module';
+import { RoleModule } from './role/role.module';
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
@@ -26,7 +27,7 @@ import { ModelsModule } from './models/models.module';
       password: process.env.DATABASE_PASSWORD,
       database: process.env.DATABASE_NAME,
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      synchronize: false, // À utiliser uniquement en développement
+      synchronize:true, // À utiliser uniquement en développement
     }),
     UsersModule,
     AuthModule,
@@ -37,7 +38,8 @@ import { ModelsModule } from './models/models.module';
     SharedModule,
     ClientModule,
     BrandsModule,
-    ModelsModule
+    ModelsModule,
+    RoleModule
 
   ],
   controllers: [AppController],

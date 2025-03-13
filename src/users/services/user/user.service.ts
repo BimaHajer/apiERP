@@ -80,7 +80,7 @@ export class UserService {
 
   async findById(id: number): Promise<any> {
     const user: any = await this.userRepository.findOne({
-      where: { id: id }
+      where: { id: id } ,relations: ['roleId']
     });
     const { token, saltRounds, password, ...result } = user;
 
