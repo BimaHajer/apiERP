@@ -33,4 +33,6 @@ export class UserDto {
   readonly zipCode?: string;
 
   createdBy?: number;
+
+  roleId :any;
 }
