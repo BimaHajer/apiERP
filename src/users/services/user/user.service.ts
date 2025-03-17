@@ -80,7 +80,7 @@ export class UserService {
 
   async findById(id: number): Promise<any> {
     const user: any = await this.userRepository.findOne({
-      where: { id: id } ,relations: ['roleId']
+      where: { id: id } 
     });
     const { token, saltRounds, password, ...result } = user;
 
@@ -92,7 +92,7 @@ export class UserService {
   }
 
   async findOne(email: string): Promise<any> {
-    return await this.userRepository.findOne({ where: { email: ILike(email) } });
+    return await this.userRepository.findOne({ where: { email: ILike(email) },relations: ['roleId'] });
   }
 
   async removeMultiple(toDelete: number[], toDisable: number[], idUser?: number) {
