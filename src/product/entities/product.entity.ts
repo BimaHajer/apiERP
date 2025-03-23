@@ -1,8 +1,9 @@
 /* eslint-disable */
 import { ApiProperty } from "@nestjs/swagger";
 import { category } from "src/category/entities/category.entity";
+import { Image } from "src/image/image/entities/image.entity";
 import { Model } from "src/models/entities/model.entity";
-import { BeforeInsert, BeforeRemove, BeforeUpdate, Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { BeforeInsert, BeforeRemove, BeforeUpdate, Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity("products")
 export class Product{
@@ -47,6 +48,11 @@ export class Product{
   @ManyToOne(() => Model, (Model: Model) => Model.id)
   @JoinColumn({ name: "modelId" })
   modelId: number | null;
+  
+  
+  @ApiProperty()
+  @OneToMany(() => Image, (image: Image) => image.productId)
+  images: Image[]
   
   @ApiProperty()
   @Column("boolean", { name: "active", nullable: true, default: true })
