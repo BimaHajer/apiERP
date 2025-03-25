@@ -16,6 +16,7 @@ import { BrandsModule } from './brands/brands.module';
 import { ModelsModule } from './models/models.module';
 import { RoleModule } from './role/role.module';
 import { ImageModule } from './image/image/image.module';
+import { TransactionModule } from './transaction/transaction.module';
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
@@ -41,7 +42,8 @@ import { ImageModule } from './image/image/image.module';
     BrandsModule,
     ModelsModule,
     RoleModule,
-    ImageModule
+    ImageModule,
+    TransactionModule
 
   ],
   controllers: [AppController],
