@@ -17,6 +17,7 @@ import { ModelsModule } from './models/models.module';
 import { RoleModule } from './role/role.module';
 import { ImageModule } from './image/image/image.module';
 import { TransactionModule } from './transaction/transaction.module';
+import { PaymentModule } from './payment/payment.module';
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
@@ -29,7 +30,7 @@ import { TransactionModule } from './transaction/transaction.module';
       password: process.env.DATABASE_PASSWORD,
       database: process.env.DATABASE_NAME,
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      synchronize:true, // À utiliser uniquement en développement
+      synchronize:false, // À utiliser uniquement en développement
     }),
     UsersModule,
     AuthModule,
@@ -43,8 +44,8 @@ import { TransactionModule } from './transaction/transaction.module';
     ModelsModule,
     RoleModule,
     ImageModule,
-    TransactionModule
-
+    TransactionModule,
+    PaymentModule
   ],
   controllers: [AppController],
   providers: [AppService],
